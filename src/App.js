@@ -81,6 +81,7 @@ export const App = () => {
         return todos;
     }
   };
+
   const statusList = ["All", "Active", "Completed"];
   const todosNewList = getStatusList();
   useEffect(() => {
@@ -113,7 +114,7 @@ export const App = () => {
           {isEdititng === true ? "Edit" : "Add"}
         </button>
       </div>
-      <section className="">
+      <section className="section-container">
         <div className="list-container ">
           {todosNewList.map((item) => {
             const { title, id, isChecked } = item;
@@ -126,7 +127,9 @@ export const App = () => {
                     checked={isChecked}
                     onChange={() => checkedItem(item)}
                   />
-                  <h4>{title}</h4>
+                  <div className={`${isChecked === true && "text-decoration"}`}>
+                    <h4>{title}</h4>
+                  </div>
                 </div>
                 {status === "Completed" && (
                   <div className="remove-container">
